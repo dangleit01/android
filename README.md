@@ -6,17 +6,25 @@ Here you can find the source code for the Android client of NextBill. Please not
 
 ![](https://raw.githubusercontent.com/nextbill-project/nextbill-project.github.io/master/screenshots/android/mixed/screenshots_mixed.png)
 
-## NextBill is great for... ##
+## Android App Features ##
 
-- **Secure Data Storage** Store your invoices, receipt images and expense reports securely on your server, NAS or desktop computer
-- **Anytime Data Access** You can access your data anytime and from anywhere via Android (even offline) and web app
-- **Intelligent Input Assistants** Automatic completion as well as e-mail reception, image upload and voice input support you during data input
-- **Split Invoices** Split bills and create expense reports for your partner, roommate or friend
-- **Billing Workflow** Always keep track of open invoices and the workflow of cost settlements
-- **Define Cost Limits** Create budgets and be automatically warned when they are exceeded
-- **Data Analysis** Evaluate your data using a series of charts and key values or look at forecasts
-- **User Administration** Manage users and give them different rights, depending on your needs
-- **Automatic Receipt Recognition** Invoices can be filled out automatically via image, voice and e-mail recognition (external service with costs, see FAQ)
+- Entry of expenses and revenues
+- Creation of standing orders
+- Assignment and creation of categories
+- Upload of receipt images
+- Creation of receipts by voice input
+- Offline function and optional background synchronization
+- Search via various filter settings
+- Definition of one or more cost units
+- Assignment of a payment type and a description
+- Saving and selecting cost distribution templates
+- Automatic completion of the category
+- Automatic completion of the cost distribution
+- Preparation of budgets and notification when they are exceeded
+- Create billings with friends
+- Notifications about the billing workflow
+- Evaluation through various diagrams
+- Automatic capture of invoices (beta version, fee required)
 
 ## Contribution
 
