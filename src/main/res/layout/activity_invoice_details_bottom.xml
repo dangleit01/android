@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollViewLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="de.nextbill.client.activities.ActivityInvoiceDetails"
+    tools:showIn="@layout/activity_invoice_details">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/standingOrderConfigRl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:background="#3F679E"
+            android:padding="10dip">
+
+            <RelativeLayout
+                android:id="@+id/standingOrderStartDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FF94BAEE"
+                android:paddingTop="3dip"
+                android:paddingBottom="3dip">
+
+
+                <TextView
+                    android:id="@+id/startDateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginTop="3dip"
+                    android:background="#FF94BAEE"
+                    android:gravity="left"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="20dip"
+                    android:text="Startdatum "
+                    android:textColor="#000000" />
+
+                <EditText
+                    android:id="@+id/standingOrderDatePickerEt"
+                    style="@style/AppTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/startDateTv"
+                    android:alpha="1"
+                    android:background="#FF94BAEE"
+                    android:gravity="left|center_vertical"
+                    android:imeOptions="flagNoExtractUi"
+                    android:text="Datum"
+                    android:textColor="#7a7a7a"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/standingOrderRepetitionTypeRl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/standingOrderStartDate"
+                android:background="#FF94BAEE">
+
+
+                <TextView
+                    android:id="@+id/repetitionTypeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dip"
+                    android:background="#FF94BAEE"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="20dip"
+                    android:text="Häufigkeit "
+                    android:textColor="#000000" />
+
+                <Spinner
+                    android:id="@+id/standingOrderRepetitionTypeSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/repetitionTypeTv"
+                    android:background="#FF94BAEE" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/isExternInvoiceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/standingOrderConfigRl"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:background="#edddae"
+            android:gravity="center_horizontal"
+            android:text="Rechnung von "
+            android:textColor="#000000"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/invoiceFailureMessageTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/isExternInvoiceTv"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:background="#EDAEAE"
+            android:gravity="center_horizontal"
+            android:text="Fehler bei der OCR-Analyse"
+            android:textColor="#000000"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/attributesLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/invoiceFailureMessageTv"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:showDividers="middle"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:id="@+id/payerRl"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/activityInvoiceDetailsPayerRecipientImageView"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/money_giver" />
+
+                <Button
+                    android:id="@+id/invoicePayerButton"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/mustBeBilledIb"
+                    android:layout_toLeftOf="@+id/mustBeBilledIb"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsPayerRecipientImageView"
+                    android:alpha="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="10dp"
+                    android:text="Geldgeber"
+                    android:textColor="#7a7a7a"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/mustBeBilledIb"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="#99bbe4"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/money" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/specialDividerRl"
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    class="androidx.legacy.widget.Space"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/paymentRecipientRl"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/activityInvoiceDetailsPaymentRecipientImageView"
+                    android:layout_width="40dip"
+                    android:layout_height="40dip"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/money_taker" />
+
+                <Button
+                    android:id="@+id/invoicePaymentRecipientButton"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_toStartOf="@+id/mustBeBilled2Ib"
+                    android:layout_toLeftOf="@+id/mustBeBilled2Ib"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsPaymentRecipientImageView"
+                    android:alpha="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical|right"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:text="Zahlungsempfänger"
+                    android:textColor="#7a7a7a"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/mustBeBilled2Ib"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="#99bbe4"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/money" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/paymentRecipientLineView"
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/personsRl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:minHeight="60dip">
+
+                <Button
+                    android:id="@+id/invoiceInvoiceCategoryButton"
+                    style="@style/AppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsInvoiceCategoryImageView"
+                    android:alpha="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical|right"
+                    android:minHeight="60dp"
+                    android:paddingLeft="10dip"
+                    android:paddingRight="10dip"
+                    android:text="Kategorie"
+                    android:textColor="#7a7a7a"
+                    android:textSize="16sp" />
+
+
+                <ImageView
+                    android:id="@+id/activityInvoiceDetailsInvoiceCategoryImageView"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="10dip"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/ic_label_outline_black_48dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/dateAndSumRl"
+                android:layout_width="wrap_content"
+                android:layout_height="50dip"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dip"
+                    android:layout_gravity="center_horizontal"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="20">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="12">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="5dip"
+                            android:layout_marginRight="10dip"
+                            android:src="@drawable/date" />
+
+                        <EditText
+                            android:id="@+id/invoiceDatePicker"
+                            style="@style/AppTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="false"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toRightOf="@+id/imageView2"
+                            android:alpha="1"
+                            android:background="@color/buttons_attributes"
+                            android:gravity="center_vertical|right"
+                            android:imeOptions="flagNoExtractUi"
+                            android:paddingLeft="10dip"
+                            android:paddingRight="10dp"
+                            android:text="Datum"
+                            android:textColor="#7a7a7a"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/money" />
+
+                        <EditText
+                            android:id="@+id/invoiceSumEt"
+                            style="@style/AppTheme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_toRightOf="@+id/imageView3"
+                            android:alpha="1"
+                            android:background="@color/buttons_attributes"
+                            android:gravity="center_vertical|right"
+                            android:imeOptions="flagNoExtractUi"
+                            android:paddingLeft="10dip"
+                            android:paddingRight="10dip"
+                            android:text="0,00"
+                            android:textColor="#7a7a7a"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/basicTypeRl"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:minHeight="60dip">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="20">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="50dip"
+                        android:layout_weight="8">
+
+                        <ImageView
+                            android:id="@+id/activityInvoiceDetailsBasicTypeImageView"
+                            android:layout_width="40dip"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="false"
+                            android:layout_alignParentRight="false"
+                            android:layout_alignParentBottom="false"
+                            android:layout_marginLeft="5dip"
+                            android:layout_marginRight="10dip"
+                            android:minHeight="60dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:src="@drawable/ic_beach_access_black_48dp" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:text="Sonderfall" />
+
+                        <Switch
+                            android:id="@+id/specialTypeSw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textView19"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10dp"
+                            android:layout_toEndOf="@+id/activityInvoiceDetailsBasicTypeImageView"
+                            android:layout_toRightOf="@+id/activityInvoiceDetailsBasicTypeImageView"
+                            android:showText="true"
+                            android:singleLine="false"
+                            android:splitTrack="false"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="12">
+
+                        <Spinner
+                            android:id="@+id/invoicePaymentTypeSpinner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@+id/imageView13" />
+
+                        <ImageView
+                            android:id="@+id/imageView13"
+                            android:layout_width="40dip"
+                            android:layout_height="40dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/baseline_credit_card_black_48" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/costDistributionItemsRl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:minHeight="50dp">
+
+                <ImageView
+                    android:id="@+id/activityInvoiceDetailsCostDistributionImageView"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="10dip"
+                    android:minHeight="50dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/baseline_call_split_black_48" />
+
+
+                <ListView
+                    android:id="@+id/costDistributionsGv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/costDistributionDialogButton"
+                    android:layout_toLeftOf="@+id/costDistributionDialogButton"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsCostDistributionImageView"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/costDistributionDialogButton"
+                    style="@style/AppTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/invoiceCostDistributionButton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="#eeeeee"
+                    android:minHeight="50dp"
+                    android:text="Details"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/invoiceCostDistributionButton"
+                    style="@style/AppTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsCostDistributionImageView"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="10dp"
+                    android:text="Kostenverteilung"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="11dp"
+                android:gravity="center_vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#bdbdbd" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/remarksRl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:minHeight="60dip">
+
+                <ImageView
+                    android:id="@+id/activityInvoiceDetailsRemarksImageView"
+                    android:layout_width="40dip"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="false"
+                    android:layout_alignParentBottom="false"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="10dip"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/baseline_edit_black_36" />
+
+
+                <EditText
+                    android:id="@+id/invoiceRemarksEt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/activityInvoiceDetailsRemarksImageView"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:paddingBottom="300dp"
+                    android:scrollbars="vertical" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

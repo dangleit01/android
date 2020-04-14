@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/invoiceListRow"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/activity_main_list_multiple_selection"
+    android:minHeight="60dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/invoiceListIvArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/arrow" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dip"
+        android:layout_toRightOf="@+id/relativeLayout7">
+
+        <TextView
+            android:id="@+id/invoiceListTvBusinessPartner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dip"
+            android:text="Aldi"
+            android:textColor="#040404"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/invoiceListTvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/invoiceListTvBusinessPartner"
+            android:layout_below="@+id/invoiceListTvBusinessPartner"
+            android:text="25. September 2015"
+            android:textColor="#343434"
+            android:textSize="12dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout7"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="top"
+        android:layout_marginLeft="5dp">
+
+        <ImageView
+            android:id="@+id/invoiceListIvStatus"
+            android:layout_width="32dip"
+            android:layout_height="32dip"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="top"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/keyboard" />
+
+        <TextView
+            android:id="@+id/externalNameTv"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/invoiceListIvStatus"
+            android:gravity="center_horizontal"
+            android:text="Mareike"
+            android:textSize="8dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/invoiceListTvSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dip"
+        android:layout_toLeftOf="@+id/invoiceListIvArrow"
+        android:text="12 €"
+        android:textSize="22dip" />
+
+
+</RelativeLayout>

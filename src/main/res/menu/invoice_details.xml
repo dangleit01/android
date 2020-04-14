@@ -1,0 +1,95 @@
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:balloonberry="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/checkMenuBtton"
+        android:icon="@drawable/ic_lock_open_white_48dp"
+        android:orderInCategory="2"
+        android:title="Auf 'Offen' setzen"
+        android:visible="false"
+        balloonberry:showAsAction="never" />
+    <item
+        android:id="@+id/problemBtn"
+        android:icon="@drawable/ic_thumbs_up_down_white_48dp"
+        android:orderInCategory="1"
+        android:title="Fehler melden"
+        android:visible="false"
+        balloonberry:showAsAction="always" />
+
+    <item
+        android:id="@+id/resetMenuButton"
+        android:icon="@drawable/ic_restore_white_48dp"
+        android:orderInCategory="1"
+        balloonberry:showAsAction="always"
+        android:visible="false"
+        android:title="Reset"/>
+    <item
+        android:id="@+id/unlockMenuBtton"
+        android:icon="@drawable/ic_lock_outline_white_48dp"
+        android:orderInCategory="3"
+        android:title="Korrekt"
+        android:visible="false"
+        balloonberry:showAsAction="always" />
+    <item
+        android:id="@+id/deleteSubMenuButton"
+        android:icon="@drawable/ic_delete_white_48dp"
+        android:orderInCategory="4"
+        balloonberry:showAsAction="always"
+        android:title="Löschen">
+        <menu>
+            <item android:id="@+id/deleteMenuButton" android:title="Bestätigen"></item>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/createStandingOrder"
+        android:orderInCategory="5"
+        balloonberry:showAsAction="always"
+        android:icon="@drawable/ic_sync_white_48dp"
+        android:title="Dauerauftrag erstellen"/>
+    <item
+        android:id="@+id/deleteStandingOrder"
+        android:orderInCategory="6"
+        android:icon="@drawable/ic_sync_disabled_white_48dp"
+        balloonberry:showAsAction="always"
+        android:title="Dauerauftrag löschen">
+    </item>
+    <item
+        android:id="@+id/addImage"
+        android:orderInCategory="5"
+        balloonberry:showAsAction="never"
+        android:icon="@drawable/ic_camera_enhance_white_48dp"
+        android:title="Bild hinzufügen"/>
+    <item
+        android:id="@+id/deleteImage"
+        android:orderInCategory="6"
+        android:icon="@drawable/ic_camera_enhance_white_48dp"
+        balloonberry:showAsAction="never"
+        android:title="Bild löschen">
+    </item>
+    <item
+        android:id="@+id/articleSelection"
+        android:icon="@drawable/ic_pan_tool_white_48dp"
+        android:orderInCategory="7"
+        android:title="Positionen auswählen"
+        balloonberry:showAsAction="never"></item>
+</menu>

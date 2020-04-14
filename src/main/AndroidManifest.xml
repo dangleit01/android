@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.nextbill.client"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_android"
+        android:label="NextBill"
+        android:theme="@style/AppTheme">
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="de.nextbill.client.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+        <activity
+            android:name="de.nextbill.client.activities.BaseActivity"
+            android:label="NextBill">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityLogin"
+            android:label="NextBill">
+        </activity>
+
+        <service android:name="de.nextbill.client.network.RequestUpdateService" />
+
+        <receiver android:name="de.nextbill.client.breceiver.AlarmManagerBroadcastReceiver" >
+        </receiver>
+
+        <activity
+            android:name="de.nextbill.client.activities.SettingsActivity"
+            android:label="Über NextBill"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="de.nextbill.client.activities.ActivityMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.nextbill.client.activities.ActivityMain" />
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityMain"
+            android:label="Rechnungen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityArticlesSelect"
+            android:label="Positionen auswählen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityStandingOrder"
+            android:label="Daueraufträge">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityBilling"
+            android:label="Abrechnungen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityBudget"
+            android:label="Budgets">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityBudgetDetails"
+            android:label="Budget-Details"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="de.nextbill.client.activities.ActivityMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.nextbill.client.activities.ActivityBudget" />
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityAnalysisTabTimeRange"
+            android:label="Auswertungen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivitySearchConfiguration"
+            android:label="Suchfilter einstellen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityMessaging"
+            android:label="Benachrichtigungen">
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityInvoiceDetails"
+            android:label="Beleg-Details"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="de.nextbill.client.activities.ActivityMain">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.nextbill.client.activities.ActivityMain" />
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityCostDistribution"
+            android:label="Kostenverteilung"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="de.nextbill.client.activities.ActivityInvoiceDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.nextbill.client.activities.ActivityInvoiceDetails" />
+        </activity>
+
+        <activity
+            android:name="de.nextbill.client.activities.ActivityBillingCreate"
+            android:label="Rechnung erstellen"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName="de.nextbill.client.activities.ActivityBilling">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="de.nextbill.client.activities.ActivityBilling" />
+        </activity>
+
+    </application>
+
+</manifest>

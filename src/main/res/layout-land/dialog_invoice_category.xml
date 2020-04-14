@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customdialog"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Kategorie"
+        android:id="@+id/costDistributionTitleTv"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:background="#427ec2"
+        android:textColor="#ffffff"
+        android:padding="5dip" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/costDistributionTitleTv"
+        android:id="@+id/searchRelativeLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/search"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/invoiceDetailsPayerDialogSearchEt"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/imageView3"
+            android:inputType="text"
+            android:enabled="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_below="@+id/searchRelativeLayout">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:id="@+id/infoBoxRL">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Suche nach Benutzer..."
+                android:id="@+id/infoBoxTv"
+                android:layout_gravity="left|center_horizontal|right"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:background="#d7d7d7"
+                android:textStyle="bold"
+                android:paddingRight="10dp" />
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/infoBoxPg"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:indeterminate="true" />
+
+        </RelativeLayout>
+
+        <se.emilsjolander.stickylistheaders.ExpandableStickyListHeadersListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/invoiceDetailsPayerDialogPayerLv"
+            android:visibility="visible"
+            android:layout_below="@+id/infoBoxRL"
+            android:layout_alignParentTop="true"
+            android:minHeight="230dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

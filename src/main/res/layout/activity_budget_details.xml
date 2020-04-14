@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:id="@+id/nameBudgetRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <ImageView
+                android:id="@+id/activityBudgetDetailsRemarksImageView"
+                android:layout_width="40dip"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="10dip"
+                android:minHeight="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@drawable/baseline_edit_black_36" />
+
+
+            <EditText
+                android:id="@+id/budgetNameEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/activityBudgetDetailsRemarksImageView"
+                android:gravity="left"
+                android:inputType="textMultiLine"
+                android:lines="1"
+                android:minHeight="60dip"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/budgetRepetitionTypeRl"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <Spinner
+                android:id="@+id/budgetRepetitionTypeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/imageView14"
+                android:gravity="right|end" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="40dip"
+                android:layout_height="40dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_autorenew_black_48dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dateAndSumRl"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dip"
+                android:layout_gravity="center_horizontal"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="40dip"
+                        android:layout_height="40dip"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/money" />
+
+                    <EditText
+                        android:id="@+id/invoiceSumEt"
+                        style="@style/AppTheme"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_toRightOf="@+id/imageView3"
+                        android:alpha="1"
+                        android:background="@color/buttons_attributes"
+                        android:gravity="center_vertical|right"
+                        android:imeOptions="flagNoExtractUi"
+                        android:paddingLeft="10dip"
+                        android:paddingRight="10dip"
+                        android:text="0,00"
+                        android:textColor="#7a7a7a"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/basicTypeRl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="50dip"
+                    android:layout_weight="8">
+
+                    <ImageView
+                        android:id="@+id/activityInvoiceDetailsBasicTypeImageView"
+                        android:layout_width="40dip"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="false"
+                        android:layout_alignParentRight="false"
+                        android:layout_alignParentBottom="false"
+                        android:layout_marginLeft="5dip"
+                        android:layout_marginRight="10dip"
+                        android:minHeight="60dp"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:src="@drawable/ic_beach_access_black_48dp" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Sonderfall" />
+
+                    <Switch
+                        android:id="@+id/specialTypeSw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView19"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toEndOf="@+id/activityInvoiceDetailsBasicTypeImageView"
+                        android:layout_toRightOf="@+id/activityInvoiceDetailsBasicTypeImageView"
+                        android:showText="true"
+                        android:singleLine="false"
+                        android:splitTrack="false"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12">
+
+                    <Spinner
+                        android:id="@+id/invoicePaymentTypeSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/imageView13" />
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="40dip"
+                        android:layout_height="40dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/baseline_credit_card_black_48" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/remarksRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <ImageView
+                android:id="@+id/activityInvoiceDetailsRemarksImageView"
+                android:layout_width="40dip"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="10dip"
+                android:minHeight="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@drawable/baseline_edit_black_36" />
+
+
+            <EditText
+                android:id="@+id/invoiceRemarksEt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/activityInvoiceDetailsRemarksImageView"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="1"
+                android:minHeight="60dip"
+                android:scrollbars="vertical"
+                android:textAlignment="textStart" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/personsRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <Button
+                android:id="@+id/invoicePersonButton"
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/controlPersonsRl"
+                android:layout_toRightOf="@+id/activityBudgetDetailsPersonImageView"
+                android:alpha="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical|right"
+                android:minHeight="60dp"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:text="Kostenträger"
+                android:textColor="#7a7a7a"
+                android:textSize="16sp" />
+
+
+            <ImageView
+                android:id="@+id/activityBudgetDetailsPersonImageView"
+                android:layout_width="40dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="10dip"
+                android:minHeight="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@drawable/baseline_call_split_black_48" />
+
+            <LinearLayout
+                android:id="@+id/controlPersonsRl"
+                android:layout_width="90dip"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/activityBudgetDetailsPersonImageView"
+                android:layout_alignBottom="@id/activityBudgetDetailsPersonImageView"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <ImageButton
+                    android:id="@+id/addUserBtn"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="10"
+                    android:background="@color/white"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/baseline_add_circle_black_48dp" />
+
+                <ImageButton
+                    android:id="@+id/clearUsersBtn"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="10"
+                    android:background="@color/white"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/ic_clear_black_48dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#bdbdbd" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/categoriesRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:minHeight="60dip">
+
+            <Button
+                android:id="@+id/invoiceInvoiceCategoryButton"
+                style="@style/AppTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/controlCategoriesRl"
+                android:layout_toRightOf="@id/activityInvoiceDetailsInvoiceCategoryImageView"
+                android:alpha="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical|right"
+                android:minHeight="60dp"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:text="Kategorie"
+                android:textColor="#7a7a7a"
+                android:textSize="16sp" />
+
+
+            <ImageView
+                android:id="@+id/activityInvoiceDetailsInvoiceCategoryImageView"
+                android:layout_width="40dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentBottom="false"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="10dip"
+                android:minHeight="60dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:src="@drawable/ic_label_outline_black_48dp" />
+
+            <LinearLayout
+                android:id="@+id/controlCategoriesRl"
+                android:layout_width="90dip"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/activityInvoiceDetailsInvoiceCategoryImageView"
+                android:layout_alignBottom="@id/activityInvoiceDetailsInvoiceCategoryImageView"
+                android:layout_alignParentRight="true"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <ImageButton
+                    android:id="@+id/addCategoryBtn"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="10"
+                    android:background="@color/white"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/baseline_add_circle_black_48dp" />
+
+                <ImageButton
+                    android:id="@+id/clearCategoriesBtn"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="10"
+                    android:background="@color/white"
+                    android:minHeight="60dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp"
+                    android:src="@drawable/ic_clear_black_48dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

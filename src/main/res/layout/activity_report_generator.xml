@@ -1,0 +1,317 @@
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/report_generator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp"
+    android:visibility="visible"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:id="@+id/userRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/titleUserTypePart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#9eaebf"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="6"
+                android:elevation="20dp"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="5dp"
+                android:text="Transaktionspartner"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left|center_vertical|center"
+                android:text="Betrag"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleUserTypePart"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/userSelectionBt"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="6"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="Benutzer"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/sumToPayTv"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="10dp"
+                android:text="New Text"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/titleDates"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/userRl"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/showTimeRangeCb"
+            android:layout_toStartOf="@+id/showTimeRangeCb"
+            android:background="#a3a3a3"
+            android:gravity="center_vertical"
+            android:paddingLeft="3dp"
+            android:text="Zeitraum"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/showTimeRangeCb"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="#cfcfcf"
+            android:checked="false" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/titleDates"
+        android:visibility="visible">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/periodRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout3"
+        android:background="#ffffff"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/startDateEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView15"
+            android:ems="10"
+            android:imeOptions="flagNoExtractUi"
+            android:text="01.01.2010" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:text="Anfang" />
+
+        <EditText
+            android:id="@+id/endDateEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/startDateEt"
+            android:layout_toEndOf="@+id/startDateEt"
+            android:layout_toRightOf="@+id/startDateEt"
+            android:editable="false"
+            android:ems="10"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="date"
+            android:text="01.01.2018" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/startDateEt"
+            android:layout_toRightOf="@+id/startDateEt"
+            android:text="Ende" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userRl"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="#9eaebf"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:text="E-Mail-Versand"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/sendMailInvoicePayerSw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView31"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:checked="true"
+            android:paddingLeft="10dp"
+            android:text="E-Mail an mich"
+            android:textSize="16dp" />
+
+        <Switch
+            android:id="@+id/sendMailCostPayerSw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sendMailInvoicePayerSw"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:checked="false"
+            android:enabled="true"
+            android:paddingLeft="10dp"
+            android:text="E-Mail an Kostenträger"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/createInternalInvoiceBt"
+        style="@style/AppTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_horizontal"
+        android:background="#576676"
+        android:text="Abrechnen"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/createInternalInvoiceBt"
+        android:indeterminate="true"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/inputMailRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout4"
+        android:layout_margin="5dp"
+        android:background="#bdd6f5"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:text="Zu verwendende E-Mail-Adresse:"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/inputMailEt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView33"
+            android:layout_toLeftOf="@+id/imageView12" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_clear_black_48dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

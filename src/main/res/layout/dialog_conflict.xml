@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customdialog"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Fehler melden"
+        android:id="@+id/costDistributionTitleTv"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:background="#c98784"
+        android:textColor="#ffffff"
+        android:padding="5dip" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/nameEt"
+            android:enabled="true"
+            android:layout_below="@+id/textView"
+            android:layout_height="100dp"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Absenden"
+            android:id="@+id/okBtn"
+            android:layout_below="@+id/nameEt"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Beschreiben Sie bitte so präzise wie möglich den Fehler oder das Problem bei dieser Rechnung:"
+            android:id="@+id/textView"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentTop="true"
+            android:textSize="14sp"
+            android:layout_marginRight="5dp"
+            android:inputType="textMultiLine" />
+
+    </RelativeLayout>
+
+</LinearLayout>

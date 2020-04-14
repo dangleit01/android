@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#e4e4e4"
+    android:orientation="horizontal"
+    android:padding="0dip"
+    android:paddingLeft="0dip"
+    android:paddingRight="0dip"
+    android:paddingBottom="3dip"
+    android:paddingTop="3dip">
+
+    <!-- ListRow Left sied Thumbnail image -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Michael"
+        android:id="@+id/costDistributionTitleTv"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:background="#427ec2"
+        android:textColor="#ffffff"
+        android:padding="5dip" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/costDistributionTitleTv"
+        android:id="@+id/invoiceDetailsCostDistributionRadioGroup">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e4e4e4"
+            android:id="@+id/sumInputRl"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="40dip"
+                android:text="Festbetrag"
+                android:id="@+id/costDistributionRadioButtonFixedAmount"
+                android:background="#e4e4e4"
+                android:textColor="#000000"
+                android:layout_toLeftOf="@+id/costDistributionFixedAmountEt"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:gravity="center_vertical" />
+
+            <EditText
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:imeOptions="flagNoExtractUi"
+                android:ems="10"
+                android:id="@+id/costDistributionFixedAmountEt"
+                android:gravity="right"
+                android:textSize="22sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:selectAllOnFocus="true" />
+
+            <EditText
+                android:focusable="true"
+                android:id="@+id/costDistributionSumDummyEt"
+                android:focusableInTouchMode="true"
+                android:layout_width="0px"
+                android:layout_height="0px"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e4e4e4" >
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="36dip"
+                android:text="Prozent"
+                android:id="@+id/costDistributionRadioButtonPercent"
+                android:textColor="#000000"
+                android:background="#e4e4e4"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/costDistributionPercentageTv"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100%"
+                android:id="@+id/costDistributionPercentageTv"
+                android:textSize="22sp"
+                android:gravity="right"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="8dip" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e4e4e4">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="36dip"
+                android:text="Anteil am Rest"
+                android:id="@+id/costDistributionRadioButtonQuota"
+                android:checked="true"
+                android:textColor="#000000"
+                android:background="#e4e4e4"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/costDistributionQuotaTv"
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/costDistributionQuotaTv"
+                android:text="1.0"
+                android:textSize="22sp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="right"
+                android:selectAllOnFocus="true"
+                android:layout_marginRight="8dip" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e4e4e4"
+            android:visibility="gone">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rest (variabel)"
+                android:id="@+id/costDistributionRadioButtonRest"
+                android:background="#e4e4e4"
+                android:textColor="#000000"
+                android:layout_toLeftOf="@+id/costDistributionRestTv"
+                android:layout_centerVertical="true"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:text="0,00"
+                android:id="@+id/costDistributionRestTv"
+                android:textSize="22sp"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="right"
+                android:paddingRight="12dip"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:background="#8c8c8c"
+        android:layout_below="@+id/invoiceDetailsCostDistributionRadioGroup"
+        android:id="@+id/lineOne" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:layout_below="@+id/lineOne"
+        android:id="@+id/relativeLayoutProgressBar"
+        android:background="#ffffff">
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:max="100"
+            android:progress="100"
+            android:layout_marginTop="5dip"
+            android:layout_toLeftOf="@+id/textView8"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="5dip" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max"
+            android:id="@+id/textView8"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:layout_marginRight="5dip"
+            android:paddingRight="8dip" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/lineTwo"
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/relativeLayoutProgressBar"
+        android:background="#8c8c8c" />
+
+    <RelativeLayout
+        android:id="@+id/alreadyPaidRl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lineTwo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="#FFFFFF"
+        android:visibility="visible">
+
+        <Switch
+            android:id="@+id/costPaidSw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text="Bezahlt"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="4dp"
+        android:layout_below="@id/alreadyPaidRl"
+        android:background="#8c8c8c" />
+
+    <Button
+        style="@style/AppTheme"
+        android:layout_width="100dip"
+        android:layout_height="40dip"
+        android:text="Fertig"
+        android:id="@+id/costDistributionOkButton"
+        android:background="#8c8c8c"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_below="@+id/remarksEt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/remarksEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView13"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:allowUndo="true"
+        android:inputType="textMultiLine"
+        android:lines="2" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alreadyPaidRl"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="2dp"
+        android:text="Bemerkung"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/article_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentEnd="true"
+    android:background="#D8D8D8">
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sumTv"
+        android:layout_alignStart="@id/sumTv"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toStartOf="@id/sumTv"
+        android:scaleType="matrix"
+        app:srcCompat="@drawable/activity_login_background" />
+
+    <TextView
+        android:id="@+id/sumTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/usrNameTv"
+        android:layout_alignStart="@id/usrNameTv"
+        android:layout_alignParentEnd="true"
+        android:layout_toStartOf="@id/usrNameTv"
+        android:background="#B2C2D1"
+        android:gravity="end"
+        android:text="Summe: 0 Euro"
+        android:textAlignment="viewEnd"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/usrNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submitBtn"
+        android:layout_alignStart="@id/submitBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_toStartOf="@id/submitBtn"
+        android:background="#B2C2D1"
+        android:gravity="end"
+        android:text="Transaktionspartner: "
+        android:textAlignment="viewEnd"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:text="Übernehmen"
+        android:textColor="@color/white" />
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minHeight="50dp">
+
+    <ImageView
+        android:id="@+id/messageListIvStatus"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_gravity="top"
+        android:layout_marginLeft="10dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_message_black_48dp"
+        android:layout_alignTop="@+id/messageLinearLayout"
+        android:layout_marginTop="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_toRightOf="@+id/messageListIvStatus"
+        android:layout_centerVertical="true"
+        android:paddingBottom="10dp"
+        android:id="@+id/messageLinearLayout"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/messageSubjectTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dip"
+            android:text="Zahlung erhalten"
+            android:textColor="#040404"
+            android:textSize="16dip"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/messageDateTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25. September 2015"
+            android:textColor="#343434"
+            android:textSize="12dip"
+            android:layout_alignTop="@+id/messageSubjectTv"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/messageMessageTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/messageSubjectTv"
+            android:layout_below="@+id/messageSubjectTv"
+            android:text="Der Benutzer Mareike hat eine Rechnung mit &quot;Zahlung verschickt&quot; markiert. Bitte bestätigen Sie den Erhalt der Zahlung von 34,32 €."
+            android:textColor="#343434"
+            android:textSize="12dip"
+            android:layout_marginRight="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:text="Zahlung erhalten"
+            style="@style/AppTheme"
+            android:id="@+id/messagesInteractionButton1"
+            android:layout_below="@+id/messageMessageTv"
+            android:layout_alignParentRight="true"
+            android:textSize="12dp"
+            android:background="#8fa9b6"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:visibility="gone"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:text="Anzeigen"
+            style="@style/AppTheme"
+            android:id="@+id/messagesInteractionButton2"
+            android:layout_below="@+id/messageMessageTv"
+            android:textSize="12dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_toLeftOf="@+id/messagesInteractionButton1"
+            android:background="#d5dfe4"
+            android:visibility="gone"
+            android:layout_marginRight="5dip"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_marginTop="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:text="Stornieren"
+            style="@style/AppTheme"
+            android:id="@+id/messagesAbortButton"
+            android:layout_below="@+id/messageMessageTv"
+            android:textSize="12dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_toLeftOf="@+id/messagesInteractionButton2"
+            android:background="#edbcb0"
+            android:visibility="gone"
+            android:layout_marginRight="5dip"
+            android:gravity="right|center_vertical|center_horizontal"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_marginTop="5dp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

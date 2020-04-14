@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ NextBill Android client application
+  ~
+  ~ @author Michael Roedel
+  ~ Copyright (c) 2020 Michael Roedel
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program. If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/invoicesMenuItem"
+
+        android:icon="@drawable/money"
+        android:title="Rechnungen" />
+    <item
+        android:id="@+id/standingOrdersMenuItem"
+
+        android:icon="@drawable/ic_autorenew_black_48dp"
+        android:title="Daueraufträge" />
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/messagesMenuItem"
+            android:icon="@drawable/ic_message_black_48dp"
+            android:title="Benachrichtigungen"
+            app:actionLayout="@layout/custom_action_item_layout" />
+    </group>
+
+    <item android:title="Sonstiges"
+        android:checkableBehavior="none">
+        <menu>
+            <item
+                android:id="@+id/billingsMenuItem"
+
+                android:icon="@drawable/money_taker"
+                android:title="Abrechnungen" />
+            <item
+                android:id="@+id/budgetsMenuItem"
+
+                android:icon="@drawable/baseline_menu_book_black_48"
+                android:title="Budgets" />
+            <item
+                android:id="@+id/analysisMenuItem"
+
+                android:icon="@drawable/baseline_insert_chart_outlined_black_48"
+                android:title="Auswertungen" />
+        </menu>
+    </item>
+
+    <item android:title="Konfiguration">
+        <menu>
+            <item
+            android:id="@+id/onlineMenuItem"
+            android:checkable="true"
+            android:enabled="true"
+            android:title="Offline-Modus"
+            android:visible="true"
+            app:actionLayout="@layout/widget_switch" />
+        <item
+            android:id="@+id/syncMenuItem"
+            android:checkable="true"
+            android:enabled="true"
+            android:title="Hintergrund-Sync"
+            android:visible="true"
+            app:actionLayout="@layout/widget_switch" />
+        <item
+            android:id="@+id/settingsMenuItem"
+            android:title="Über NextBill" />
+        <item
+            android:id="@+id/logoutMenuItem"
+            android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>
