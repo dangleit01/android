@@ -115,7 +115,7 @@ public class ActivityLogin extends AppCompatActivity{
         if(!fi.equals("")) {
             editTextServer.setText(fi);
         }else{
-            findServerIp();
+            editTextServer.setText("http://[IP/Domain]:8010");
         }
 
         btnSearchIp.setOnClickListener(new View.OnClickListener() {
@@ -269,7 +269,7 @@ public class ActivityLogin extends AppCompatActivity{
                     }
                 }
 
-                Toast.makeText(getApplicationContext(), "Keine Internet-Verbindung!\nSynchronistation erst sobald wieder online.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Keine Verbindung zum Server möglich oder Konfiguration fehlerhaft!", Toast.LENGTH_LONG).show();
 
                 lockInputs(false);
                 showInfotextAndProgress(false);
@@ -382,17 +382,17 @@ public class ActivityLogin extends AppCompatActivity{
         public String findIp(String prefixIp) {
 
 
-            for (int i = 0; i <= 110; i++ ) {
+            for (int i = 0; i <= 60; i++ ) {
                 String tryIp = prefixIp + i;
-                String result = sendRequest(tryIp, 25);
+                String result = sendRequest(tryIp, 15);
                 if (result != null) {
                     return result;
                 }
             }
 
-            for (int i = 0; i <= 110; i++ ) {
+            for (int i = 0; i <= 255; i++ ) {
                 String tryIp = prefixIp + i;
-                String result = sendRequest(tryIp, 90);
+                String result = sendRequest(tryIp, 25);
                 if (result != null) {
                     return result;
                 }
@@ -459,7 +459,9 @@ public class ActivityLogin extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(), "NextBill-Server erfolgreich gefunden!", Toast.LENGTH_LONG).show();
             } else{
                 Log.w(TAG, "No Ip found!");
-                String foundIp = "http://"+getWifiApIpAddressOfWlan()+":8010";
+                String wlanIp = getWifiApIpAddressOfWlan();
+
+                String foundIp = "http://"+(wlanIp != null ? wlanIp : "[IP/Domain]")+":8010";
                 editTextServer.setText(foundIp);
                 editTextServer.selectAll();
 

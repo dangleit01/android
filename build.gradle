@@ -42,6 +42,8 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            debuggable = false
+            ext.enableCrashlytics = true
         }
     }
     packagingOptions {
