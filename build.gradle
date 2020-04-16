@@ -37,7 +37,7 @@ android {
         applicationId 'de.nextbill.client'
         minSdkVersion 21
         targetSdkVersion 28
-        versionName '1.2.1'
+        versionName '1.2.2'
     }
     buildTypes {
         release {
