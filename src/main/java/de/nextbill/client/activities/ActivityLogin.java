@@ -384,7 +384,7 @@ public class ActivityLogin extends AppCompatActivity{
 
             for (int i = 0; i <= 60; i++ ) {
                 String tryIp = prefixIp + i;
-                String result = sendRequest(tryIp, 15);
+                String result = sendRequest(tryIp, 25);
                 if (result != null) {
                     return result;
                 }
@@ -392,7 +392,7 @@ public class ActivityLogin extends AppCompatActivity{
 
             for (int i = 0; i <= 255; i++ ) {
                 String tryIp = prefixIp + i;
-                String result = sendRequest(tryIp, 25);
+                String result = sendRequest(tryIp, 40);
                 if (result != null) {
                     return result;
                 }

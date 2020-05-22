@@ -2627,12 +2627,27 @@ public class MainDatabaseHandler extends SQLiteOpenHelper {
 			}
 		}else if (classType.equals(BasicData.class)){
 			BasicData basicData = (BasicData) databaseChangeDTO.getMappedObject();
-			if (databaseChangeDTO.getRevisionType() == 0 || databaseChangeDTO.getRevisionType() == 1){
-				updateBasicData(basicData);
-			}else if (databaseChangeDTO.getRevisionType() == 2){
-				List<BasicData> objects = new ArrayList<>();
-				objects.add(basicData);
-				deleteBasicDatas(objects);
+
+			if (BasicDataType.INTERNAL_DATA.equals(basicData.getBasicDataType())
+				&& BasicDataSubType.INVOICE_DELETED.equals(basicData.getBasicDataSubType())) {
+
+				SqlBuilder sqlBuilder = new SqlBuilder(MainDatabaseHandler.TABLE_COST_DISTRIBUTION_ITEM);
+				sqlBuilder.isEqual(MainDatabaseHandler.VAR_INVOICE_ID, basicData.getObject1Id());
+				List<CostDistributionItem> costDistributionItems = findCostDistributionItemsSql(sqlBuilder);
+				deleteCostDistributionItems(costDistributionItems);
+
+				sqlBuilder = new SqlBuilder(MainDatabaseHandler.TABLE_INVOICE);
+				sqlBuilder.isEqual(MainDatabaseHandler.VAR_INVOICE_ID, basicData.getObject1Id());
+				List<Invoice> invoices1 = findInvoicesSql(sqlBuilder);
+				deleteInvoices(invoices1);
+			}else{
+				if (databaseChangeDTO.getRevisionType() == 0 || databaseChangeDTO.getRevisionType() == 1){
+					updateBasicData(basicData);
+				}else if (databaseChangeDTO.getRevisionType() == 2){
+					List<BasicData> objects = new ArrayList<>();
+					objects.add(basicData);
+					deleteBasicDatas(objects);
+				}
 			}
 		}else if (classType.equals(AppUser.class)){
 			AppUser object = (AppUser) databaseChangeDTO.getMappedObject();
