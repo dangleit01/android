@@ -55,58 +55,58 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#a2a2a2"
-        android:layout_below="@+id/titleTextView"
         android:id="@+id/addSubCategoryRl"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_below="@+id/titleTextView"
+        android:background="#a2a2a2"
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/takePictureTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Name der neuen Unterkategorie:"
-            android:id="@+id/takePictureTv"
-            android:gravity="center_vertical"
-            android:textSize="14sp"
-            android:layout_toRightOf="@+id/abortSubCategoryAddIv"
-            android:layout_marginLeft="5dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/abortSubCategoryAddIv"
+            android:gravity="center_vertical"
+            android:text="Name der neuen Unterkategorie:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="14sp" />
 
         <EditText
+            android:id="@+id/subCategoryNameEt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/subCategoryNameEt"
+            android:layout_below="@id/takePictureTv"
             android:layout_alignParentTop="false"
-            android:layout_toRightOf="@+id/abortSubCategoryAddIv"
-            android:layout_alignParentRight="false"
             android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
             android:layout_toLeftOf="@+id/addSubCategoryReadyIv"
-            android:layout_below="@+id/textView6"
+            android:layout_toRightOf="@+id/abortSubCategoryAddIv"
             android:focusable="true"
             android:focusableInTouchMode="true" />
 
         <ImageView
+            android:id="@+id/abortSubCategoryAddIv"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/abortSubCategoryAddIv"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:src="@drawable/ic_clear_black_48dp"
-            android:layout_marginLeft="5dp" />
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_clear_black_48dp" />
 
         <ImageView
+            android:id="@+id/addSubCategoryReadyIv"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/addSubCategoryReadyIv"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="false"
-            android:src="@drawable/ic_done_black_48dp"
-            android:layout_marginRight="5dp" />
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_done_black_48dp" />
     </RelativeLayout>
 
 </RelativeLayout>

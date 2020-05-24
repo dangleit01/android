@@ -375,8 +375,8 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             saveAndUpload();
 
             if (nextCheckInvoice == null) {
-                Intent newIntent = new Intent(getApplicationContext(), ActivityMain.class);
-                startActivity(newIntent);
+                setResult(RESULT_OK);
+                finish();
                 overridePendingTransition(R.anim.activity_out1, R.anim.activity_out2);
             }else{
                 showNextCheckInvoice(nextCheckInvoice);
@@ -1456,6 +1456,9 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             refreshResetButtonView();
 
             refreshViews();
+        }else if(requestCode == INVOICE_DETAILS){
+            setResult(resultCode);
+            finish();
         }
     }
 
@@ -1570,6 +1573,9 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
             intent.putExtra("costDistributionItems", costDistributionItemsAsString);
 
+            boolean isExternalUserCheckMode = CostDistributionHelper.isExternalUserCheckMode(getApplicationContext(), currentInvoice, costDistributionItems);
+            boolean isExternalUserReadyMode = CostDistributionHelper.isExternalUserReadyMode(getApplicationContext(), currentInvoice, costDistributionItems);
+
             String sumOfInvoice = "0.0";
             if (currentInvoice.getSumOfInvoice() != null){
                 BigDecimal sumOfInvoiceDecimal = currentInvoice.getSumOfInvoice().setScale(2, BigDecimal.ROUND_HALF_EVEN);
@@ -1577,7 +1583,10 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             }
             intent.putExtra("sum", sumOfInvoice);
             intent.putExtra("invoiceId", currentInvoice.getInvoiceId().toString());
-            intent.putExtra("showArticleSelect", imageExists() != null && (!this.doUploadImage && !this.doDeleteImage) && RightHelper.hasUserRight(getApplicationContext(), Right.OCR));
+            intent.putExtra("showArticleSelect", imageExists() != null &&
+                    (!this.doUploadImage && !this.doDeleteImage) &&
+                    RightHelper.hasUserRight(getApplicationContext(), Right.OCR) &&
+                    !isExternalUserCheckMode && !isExternalUserReadyMode);
             startActivityForResult(intent, COST_DISTRIBUTION);
         }else{
             FragmentManager fm = getSupportFragmentManager();
@@ -1968,17 +1977,20 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
         articleSelectionMenuButton = menu.findItem(R.id.articleSelection);
         refreshResetButtonView();
 
+        boolean isExternalUserCheckMode = CostDistributionHelper.isExternalUserCheckMode(getApplicationContext(), currentInvoice, costDistributionItems);
+        boolean isExternalUserReadyMode = CostDistributionHelper.isExternalUserReadyMode(getApplicationContext(), currentInvoice, costDistributionItems);
+
         if (!RightHelper.hasUserRight(getApplicationContext(), Right.OCR)){
             articleSelectionMenuButton.setEnabled(false);
         }else{
-            if (!this.doDeleteImage && !this.doUploadImage){
+            if (!this.doDeleteImage && !this.doUploadImage && !isExternalUserCheckMode && !isExternalUserReadyMode){
                 articleSelectionMenuButton.setVisible(true);
             }else{
                 articleSelectionMenuButton.setVisible(false);
             }
         }
 
-        if (CostDistributionHelper.isExternalUserCheckMode(getApplicationContext(), currentInvoice, costDistributionItems)) {
+        if (isExternalUserCheckMode) {
             problemBtn.setVisible(true);
         }else if (CostDistributionHelper.isCreatedUserCheckMode(getApplicationContext(), currentInvoice)){
             problemBtn.setVisible(false);
@@ -1989,7 +2001,7 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
         }
 
         if (currentInvoice != null){
-            if (isStandingOrder){
+            if (isStandingOrder || isExternalUserCheckMode || isExternalUserReadyMode){
                 createStandingOrder.setVisible(false);
                 deleteStandingOrder.setVisible(false);
             }else{
@@ -2018,7 +2030,11 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
         if (imageExists() != null){
             deleteImage.setVisible(true);
             addImage.setVisible(false);
-            if (!this.doDeleteImage && !this.doUploadImage){
+
+            boolean isExternalUserCheckMode = CostDistributionHelper.isExternalUserCheckMode(getApplicationContext(), currentInvoice, costDistributionItems);
+            boolean isExternalUserReadyMode = CostDistributionHelper.isExternalUserReadyMode(getApplicationContext(), currentInvoice, costDistributionItems);
+
+            if (!this.doDeleteImage && !this.doUploadImage && !isExternalUserCheckMode && !isExternalUserReadyMode){
                 articleSelectionMenuButton.setVisible(true);
             }else{
                 articleSelectionMenuButton.setVisible(false);
@@ -2047,9 +2063,8 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
                 if (nextCheckInvoice != null && saved){
                     showNextCheckInvoice(nextCheckInvoice);
                 }else{
-                    Intent newIntent = new Intent(getApplicationContext(), ActivityMain.class);
-                    startActivity(newIntent);
-                    overridePendingTransition(R.anim.activity_out1, R.anim.activity_out2);
+                    setResult(RESULT_OK);
+                    finish();
                 }
             }else{
                 Intent k = getIntent();
@@ -2090,7 +2105,7 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
         if (invoice != null) {
             Intent newIntent = new Intent(getApplicationContext(), ActivityInvoiceDetails.class);
             newIntent.putExtra("idInvoice", invoice.getInvoiceId().toString());
-            startActivity(newIntent);
+            startActivityForResult(newIntent, INVOICE_DETAILS);
             overridePendingTransition(R.anim.activity_in1, R.anim.activity_in2);
             return true;
         }else{
@@ -2216,8 +2231,8 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
                 }else{
                     deleteInvoice();
 
-                    Intent newIntent = new Intent(getApplicationContext(), ActivityMain.class);
-                    startActivity(newIntent);
+                    setResult(RESULT_OK);
+                    finish();
                     overridePendingTransition(R.anim.activity_out1, R.anim.activity_out2);
                     break;
                 }
@@ -2235,8 +2250,8 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
                 saveAndUpload();
 
-                Intent newIntent = new Intent(getApplicationContext(), ActivityMain.class);
-                startActivity(newIntent);
+                setResult(RESULT_OK);
+                finish();
                 overridePendingTransition(R.anim.activity_out1, R.anim.activity_out2);
                 break;
             case R.id.resetMenuButton:
@@ -2277,6 +2292,9 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
             intent.putExtra("costDistributionItems", costDistributionItemsAsString);
 
+            boolean isExternalUserCheckMode = CostDistributionHelper.isExternalUserCheckMode(getApplicationContext(), currentInvoice, costDistributionItems);
+            boolean isExternalUserReadyMode = CostDistributionHelper.isExternalUserReadyMode(getApplicationContext(), currentInvoice, costDistributionItems);
+
             String sumOfInvoice = "0.0";
             if (currentInvoice.getSumOfInvoice() != null){
                 BigDecimal sumOfInvoiceDecimal = currentInvoice.getSumOfInvoice().setScale(2, BigDecimal.ROUND_HALF_EVEN);
@@ -2284,7 +2302,10 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             }
             intent.putExtra("sum", sumOfInvoice);
             intent.putExtra("invoiceId", currentInvoice.getInvoiceId().toString());
-            intent.putExtra("showArticleSelect", imageExists() != null && (!this.doUploadImage && !this.doDeleteImage) && RightHelper.hasUserRight(getApplicationContext(), Right.OCR));
+            intent.putExtra("showArticleSelect", imageExists() != null &&
+                    (!this.doUploadImage && !this.doDeleteImage) &&
+                    RightHelper.hasUserRight(getApplicationContext(), Right.OCR) &&
+                    !isExternalUserCheckMode && !isExternalUserReadyMode);
 
             startActivityForResult(intent, COST_DISTRIBUTION);
 
