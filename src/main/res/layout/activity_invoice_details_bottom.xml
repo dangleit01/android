@@ -679,8 +679,9 @@
                     android:layout_toRightOf="@+id/activityInvoiceDetailsRemarksImageView"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:lines="4"
-                    android:paddingBottom="300dp"
+                    android:scrollbarStyle="insideInset"
+                    android:lines="20"
+                    android:overScrollMode="always"
                     android:scrollbars="vertical" />
 
             </RelativeLayout>

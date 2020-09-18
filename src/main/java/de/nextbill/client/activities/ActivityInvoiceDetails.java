@@ -42,6 +42,7 @@ import android.text.TextWatcher;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -576,7 +577,6 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
         invoicePaymentTypeSpinner = (Spinner) findViewById(R.id.invoicePaymentTypeSpinner);
 
-
         TextWatcher remarkChangedListener = new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -593,6 +593,20 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             }
         };
         invoiceRemarksEt.addTextChangedListener(remarkChangedListener);
+        invoiceRemarksEt.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                if (invoiceRemarksEt.hasFocus()) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (event.getAction() & MotionEvent.ACTION_MASK){
+                        case MotionEvent.ACTION_SCROLL:
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            return true;
+                    }
+                }
+                return false;
+            }
+        });
 
         ArrayAdapter<PaymentTypeEnum> dataAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_spinner_item, paymentTypeEnums);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1628,6 +1642,7 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
         List<IPaymentPerson> appUsers = new ArrayList<>();
 
+        appUsers.add(currentUser);
         sqlBuilder2 = new SqlBuilder(MainDatabaseHandler.TABLE_USER_CONTACT);
         sqlBuilder2
                 .isNotNull(MainDatabaseHandler.VAR_APP_USER_CONTACT_ID)
@@ -1709,6 +1724,7 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
         List<IPaymentPerson> appUsers = new ArrayList<>();
 
+        appUsers.add(currentUser);
         sqlBuilder2 = new SqlBuilder(MainDatabaseHandler.TABLE_USER_CONTACT);
         sqlBuilder2
                 .isNotNull(MainDatabaseHandler.VAR_APP_USER_CONTACT_ID)
@@ -1988,6 +2004,12 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
             }else{
                 articleSelectionMenuButton.setVisible(false);
             }
+        }
+
+        if (isExternalUserCheckMode || isExternalUserReadyMode) {
+            deleteMenuButton.setVisible(false);
+        }else {
+            deleteMenuButton.setVisible(true);
         }
 
         if (isExternalUserCheckMode) {
