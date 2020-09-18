@@ -215,7 +215,7 @@ public class ActivityBillingCreate extends AppCompatActivity implements DialogPa
                 if (activityClassName.equals(ActivityBillingCreate.class.getSimpleName())){
                     if (BroadcastMessageActionEnum.READY.equals(broadcastMessageActionEnum)) {
                         progressBar2.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), "Rechnung erfolgreich erstellt!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Abrechnung erfolgreich erstellt!", Toast.LENGTH_LONG).show();
 
                         Intent j = getIntent();
                         j.putExtra("refresh", "");

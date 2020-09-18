@@ -21,7 +21,7 @@
 package de.nextbill.client.enums;
 
 public enum DiagrammTypeEnum {
-	LINE_DIAGRAM("Balkendiagramm"), CAKE_DIAGRAM("Kuchendiagramm")
+	LINE_DIAGRAM("Balkendiagramm"), CAKE_DIAGRAM("Tortendiagramm")
 	;
 
 	String displayName;

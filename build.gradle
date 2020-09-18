@@ -27,7 +27,7 @@ allprojects {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
     compileOptions {
         sourceCompatibility 1.8
@@ -36,8 +36,8 @@ android {
     defaultConfig {
         applicationId 'de.nextbill.client'
         minSdkVersion 21
-        targetSdkVersion 28
-        versionName '1.2.2'
+        targetSdkVersion 29
+        versionName '1.2.4'
     }
     buildTypes {
         release {

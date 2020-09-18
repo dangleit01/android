@@ -27,7 +27,7 @@
         balloonberry:showAsAction="always"
         android:title="Löschen">
         <menu>
-            <item android:id="@+id/deleteBudgetMenuButton" android:title="Bestätigen"></item>
+            <item android:id="@+id/deleteBudgetMenuButton" android:title="Löschen bestätigen"></item>
         </menu>
     </item>
 </menu>

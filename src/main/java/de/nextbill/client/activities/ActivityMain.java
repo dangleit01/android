@@ -522,7 +522,7 @@ public class ActivityMain extends BaseActivity implements  DialogMainFunctions.S
 
     private void alertDialogForTakePhoto(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMain.this);
-        builder.setTitle("Weiteres Foto schießen?");
+        builder.setTitle("Weiteren Beleg aufnehmen?");
 
         builder.setPositiveButton("Ja", new DialogInterface.OnClickListener() {
             @Override
@@ -530,7 +530,7 @@ public class ActivityMain extends BaseActivity implements  DialogMainFunctions.S
                 takePicture();
             }
         });
-        builder.setNegativeButton("Zurück", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Nein", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
