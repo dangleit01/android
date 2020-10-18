@@ -29,8 +29,6 @@ import java.io.IOException;
 
 public class IOHelper {
 
-    public static final int STORAGE_EXTERN = 2;
-
     public static final String STORAGE_NAME = "nextbill";
 
     public static IOHelper getInstance() {
@@ -38,11 +36,9 @@ public class IOHelper {
     }
 
     private static IOHelper instance = new IOHelper();
-    private Context ctx;
-    private int storage;
+    private static Context ctx;
 
     private IOHelper() {
-        this.storage = STORAGE_EXTERN;
     }
 
     public void setCtx(Context ctx) {
@@ -50,8 +46,15 @@ public class IOHelper {
     }
 
     public static String getAppDirectory() {
-        String url = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + STORAGE_NAME;
+        String url = "";
         try {
+            File externalEnvironmentFiles = Environment.getExternalStorageDirectory();
+            if (externalEnvironmentFiles.canWrite() && externalEnvironmentFiles.canRead()) {
+                url = externalEnvironmentFiles.getAbsolutePath() + "/" + STORAGE_NAME;
+            } else {
+                url = ctx.getExternalFilesDir(STORAGE_NAME).getAbsolutePath() + "/" + STORAGE_NAME;
+            }
+
             createAppDir(url);
         } catch (IOException e) {
             e.printStackTrace();
