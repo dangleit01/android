@@ -21,4 +21,5 @@
 
 <paths>
     <external-path name="external_files" path="./nextbill" />
+    <external-files-path name="external_files" path="./nextbill" />
 </paths>
