@@ -1724,7 +1724,7 @@ public class ActivityInvoiceDetails extends AppCompatActivity implements DialogD
 
         List<IPaymentPerson> appUsers = new ArrayList<>();
 
-        appUsers.add(currentUser);
+//        appUsers.add(currentUser);
         sqlBuilder2 = new SqlBuilder(MainDatabaseHandler.TABLE_USER_CONTACT);
         sqlBuilder2
                 .isNotNull(MainDatabaseHandler.VAR_APP_USER_CONTACT_ID)

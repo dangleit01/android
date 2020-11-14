@@ -467,7 +467,10 @@ public class ActivitySearchConfiguration extends AppCompatActivity implements Di
 
         List<IPaymentPerson> appUsers = new ArrayList<>();
 
-        appUsers.add(currentUser);
+        if (!InvoiceDetailsPaymentPersonDialogEnum.PAYMENT_RECIPIENT.equals(invoiceDetailsPaymentPersonDialogEnum)){
+            appUsers.add(currentUser);
+        }
+
         sqlBuilder2 = new SqlBuilder(MainDatabaseHandler.TABLE_USER_CONTACT);
         sqlBuilder2
                 .isNotNull(MainDatabaseHandler.VAR_APP_USER_CONTACT_ID)
