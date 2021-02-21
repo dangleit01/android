@@ -30,7 +30,6 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
@@ -204,32 +203,11 @@ public class RequestUpdateService extends IntentService {
 
         } catch (LoginDataException e) {
             e.printStackTrace();
-
-            try {
-                deleteFirebaseToken(FirebaseInstanceId.getInstance().getId());
-            } catch (OfflineException ex) {
-                ex.printStackTrace();
-            } catch (DataSyncException ex) {
-                ex.printStackTrace();
-            } catch (LoginDataException ex) {
-                ex.printStackTrace();
-            }
-
             handler.updateStatus(StatusDatabaseHandler.STATUS_UPDATE_DONE);
 
             sendLoginMessage(e.getLoginStatusEnum());
         } catch (DataSyncException e) {
             e.printStackTrace();
-
-            try {
-                deleteFirebaseToken(FirebaseInstanceId.getInstance().getId());
-            } catch (OfflineException ex) {
-                ex.printStackTrace();
-            } catch (DataSyncException ex) {
-                ex.printStackTrace();
-            } catch (LoginDataException ex) {
-                ex.printStackTrace();
-            }
 
             handler.updateStatus(StatusDatabaseHandler.STATUS_UPDATE_DONE);
 

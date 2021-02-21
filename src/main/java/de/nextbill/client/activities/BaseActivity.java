@@ -45,7 +45,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.legacy.app.ActionBarDrawerToggle;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -526,14 +525,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void startLoginActivity(){
-
-        StatusDatabaseHandler handler = StatusDatabaseHandler.getInstance(getApplicationContext());
-
-        Intent sIntent = new Intent(getApplicationContext(), RequestUpdateService.class);
-        sIntent.putExtra(RequestUpdateService.KEY_TYPE, RequestUpdateService.REQUEST_TYPE_FIREBASE);
-        sIntent.putExtra(RequestUpdateService.KEY_EXTRA, FirebaseInstanceId.getInstance().getId());
-        sIntent.putExtra(RequestUpdateService.KEY_TRANSACTION_TYPE, "DELETE");
-        getApplicationContext().startService(sIntent);
 
         LoginUserHelper.logoutAllUsers(getApplicationContext());
 

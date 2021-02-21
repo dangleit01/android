@@ -837,7 +837,11 @@ public class RequestManager {
 
             Log.e(TAG, "Headers are written");
 
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .writeTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(15, TimeUnit.SECONDS)
+                    .build();
 
             RequestBody requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM)
                     .addFormDataPart("fileUpload", iFileName,
@@ -884,6 +888,7 @@ public class RequestManager {
         } catch (ProtocolException e) {
             throw new DataSyncException();
         } catch (IOException e) {
+            e.printStackTrace();
             throw new OfflineException();
         }
     }
