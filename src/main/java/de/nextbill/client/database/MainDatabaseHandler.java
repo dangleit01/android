@@ -169,7 +169,7 @@ public class MainDatabaseHandler extends SQLiteOpenHelper {
 	public static final String VAR_BASIC_STATUS_ENUM="basicStatusEnum";
 		
 	public static final String DB_NAME="nextbill";
-	public static final int DB_VERSION=10;
+	public static final int DB_VERSION=11;
 
 	private static MainDatabaseHandler mInstance = null;
 
