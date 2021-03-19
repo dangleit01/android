@@ -448,13 +448,13 @@ public class RequestUpdateService extends IntentService {
             Bitmap unscaledBitmap = ImageHelper.decodeFile(inputFile.getAbsolutePath(), 2500, 2500);
             Bitmap scaledBitmap = ImageHelper.createScaledBitmap(2500, 2500, unscaledBitmap);
             OutputStream os = new BufferedOutputStream(new FileOutputStream(wifiFile));
-            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 96, os);
+            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 98, os);
             os.close();
 
             unscaledBitmap = ImageHelper.decodeFile(inputFile.getAbsolutePath(), 2000, 2000);
             scaledBitmap = ImageHelper.createScaledBitmap(2000, 2000, unscaledBitmap);
             os = new BufferedOutputStream(new FileOutputStream(normalFile));
-            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 90, os);
+            scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 96, os);
             os.close();
 
             successfull = true;
